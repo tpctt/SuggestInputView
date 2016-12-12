@@ -6,7 +6,7 @@
 //  Copyright © 2016年 timRabbit. All rights reserved.
 //
 
-#import "UIViewWithNib.h"
+#import <UIKit/UIKit.h>
 
 /**
  获取意见反馈的数据
