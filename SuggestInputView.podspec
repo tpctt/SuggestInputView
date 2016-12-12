@@ -11,7 +11,8 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "6.0"
   s.requires_arc          = true
   s.framework             = "Foundation","UIKit"
-  # s.dependency 'HTHorizontalSelectionList'
+  s.dependency 'ZLPhotoBrowser', '~> 2.0.2'
+
   s.source_files = 'Classess/**/*.{h,m,mm}'
   
   # s.library		= "z.1.1.3","stdc++","sqlite3"

@@ -9,7 +9,6 @@
 #import "SuggestImageSelectView.h"
 #import "SuggestImageSelectViewCell.h"
 
-#import <LCActionSheet.h>
 #import <ZLPhotoActionSheet.h>
 #import <ZLShowBigImgViewController.h>
 
