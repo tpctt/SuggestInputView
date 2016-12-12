@@ -98,7 +98,7 @@
 -(void)subCommonInit
 {
     self.textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-    self.textView .font = MYFONT(15);
+    self.textView .font = [UIFont systemFontOfSize:15];
     
     self.imagesView = [[SuggestImageSelectView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     
