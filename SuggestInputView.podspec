@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                  = "SuggestInputView"
-  s.version               = "1.0.1"
+  s.version               = "1.0.2"
   s.summary               = "SuggestInputView 常见的意见反馈部分的代码封装,支持图片和文本输入  "
   s.homepage              = "https://github.com/tpctt/SuggestInputView"
   s.social_media_url      = "https://github.com/tpctt/SuggestInputView"
