@@ -27,6 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.view.backgroundColor = [UIColor whiteColor];
     
     self.suggestInputView = [[SuggestInputView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.suggestInputView];   

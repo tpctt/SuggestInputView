@@ -22,4 +22,5 @@ typedef void(^SuggestInputBlock)(NSString *text , NSArray <UIImage *> * imagesAr
 ````
 
 
-<br>![](https://github.com/LQQZYY/LZButtonCategory/blob/master/LZButton.png)```
+<br>![](https://github.com/tpctt/SuggestInputView/blob/master/1.png)
+<br>![](https://github.com/tpctt/SuggestInputView/blob/master/2.png)```
