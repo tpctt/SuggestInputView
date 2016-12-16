@@ -1,6 +1,6 @@
 # SuggestInputView
 SuggestInputView 常见的意见反馈部分的代码封装,支持图片和文本输入 
- 
+
 
 ````objectivec
 /**
@@ -21,7 +21,8 @@ typedef void(^SuggestInputBlock)(NSString *text , NSArray <UIImage *> * imagesAr
 @end
 ````
 
+ <br>
+<br>![](https://github.com/tpctt/SuggestInputView/blob/master/img/1.png)
+ ![](https://github.com/tpctt/SuggestInputView/blob/master/img/2.png)
 
-![img1](https://github.com/tpctt/SuggestInputView/tree/master/img/1.png)
-![img2](https://github.com/tpctt/SuggestInputView/tree/master/img/2.png)
 
