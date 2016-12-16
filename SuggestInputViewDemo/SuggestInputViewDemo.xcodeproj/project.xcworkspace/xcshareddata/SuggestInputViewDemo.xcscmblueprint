@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "2EF6B01E9ECC2DC14D15D4A126164DC648D01169",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "8F017EC21007794190913BD1CE90B1B42BE05148" : 9223372036854775807,
+    "2EF6B01E9ECC2DC14D15D4A126164DC648D01169" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E6ECC6A2-D071-4FC6-B015-C6E0AFF0B8D6",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "8F017EC21007794190913BD1CE90B1B42BE05148" : "..\/taoqianbao_git\/kehufox-iOS-code",
+    "2EF6B01E9ECC2DC14D15D4A126164DC648D01169" : "SuggestInputView2\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SuggestInputViewDemo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "SuggestInputViewDemo\/SuggestInputViewDemo.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/tpctt\/SuggestInputView.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2EF6B01E9ECC2DC14D15D4A126164DC648D01169"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/192.168.1.254:3000\/gogs\/kehu_ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8F017EC21007794190913BD1CE90B1B42BE05148"
+    }
+  ]
+}

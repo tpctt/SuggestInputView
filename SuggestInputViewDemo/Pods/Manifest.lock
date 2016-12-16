@@ -1,0 +1,12 @@
+PODS:
+  - ZLPhotoBrowser (2.0.2)
+
+DEPENDENCIES:
+  - ZLPhotoBrowser
+
+SPEC CHECKSUMS:
+  ZLPhotoBrowser: 1fe6c127883140e0ffe56adc2fdafbd82c309d22
+
+PODFILE CHECKSUM: a1837a1fd9c33229e478b70455e30adfb8c0602b
+
+COCOAPODS: 1.1.1
