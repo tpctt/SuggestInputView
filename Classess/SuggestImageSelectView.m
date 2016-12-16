@@ -9,8 +9,8 @@
 #import "SuggestImageSelectView.h"
 #import "SuggestImageSelectViewCell.h"
 
-#import <ZLPhotoActionSheet.h>
-#import <ZLShowBigImgViewController.h>
+#import "ZLPhotoActionSheet.h"
+#import "ZLShowBigImgViewController.h"
 
 
 @interface SuggestImageSelectView ()
@@ -113,7 +113,7 @@
 -(CGSize)getItemSize
 {
     
-    CGFloat itemW = (self.width - (self.numberOfRow + 1) * self.itemSpace) / self.numberOfRow ;
+    CGFloat itemW = (self.frame.size.width - (self.numberOfRow + 1) * self.itemSpace) / self.numberOfRow ;
     itemW = floorf(itemW) - 5;
     return CGSizeMake(itemW, itemW);;
     
@@ -146,7 +146,11 @@
 {
     SuggestImageSelectViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([SuggestImageSelectViewCell class]) forIndexPath:indexPath];
     
-    UIImage * image = [self.currectImageArray safeObjectAtIndex:indexPath.row];
+    UIImage * image = nil;
+    if(indexPath.row < self.currectImageArray.count){
+        image = [self.currectImageArray objectAtIndex:indexPath.row];
+    }
+    
     if(!image){
         image = self.cameraBgIcon;
     }
@@ -199,18 +203,14 @@
 //    
 
     [self.collectView reloadData];
-    
-    GCD_main(
-//    NSInteger num = [self.collectView numberOfItemsInSection:0] ;
-             self.collectView .contentOffset = CGPointMake(0, self.collectView.contentSize.height - self.frame.size.height);
-             
-             [self.superview setNeedsLayout];
-             [self.superview layoutIfNeeded];
-             
-             
-             
-             )
-    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.collectView .contentOffset = CGPointMake(0, self.collectView.contentSize.height - self.frame.size.height);
+        
+        [self.superview setNeedsLayout];
+        [self.superview layoutIfNeeded];
+        
+        
+    });
     
     
 //    [self.collectView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:[self.collectView numberOfItemsInSection:0] inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
