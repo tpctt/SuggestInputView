@@ -80,10 +80,10 @@
     
     self.collectView = [[UICollectionView alloc] initWithFrame:self.frame collectionViewLayout:layout];
     
-   
+    
     [self.collectView registerClass:[SuggestImageSelectViewCell class] forCellWithReuseIdentifier:NSStringFromClass([SuggestImageSelectViewCell class])];
     [self addSubview:self.collectView];
-
+    
     self.collectView.dataSource = self;
     self.collectView.delegate = self;
     self.collectView.backgroundColor = [UIColor whiteColor];
@@ -97,14 +97,14 @@
     [super layoutSubviews]  ;
     
     self.collectView.frame = self.bounds;
-
+    
     
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectView.collectionViewLayout;
     
     
     layout.itemSize = [self getItemSize];
-//    layout.minimumInteritemSpacing = self.itemSpace;
-//    layout.minimumLineSpacing = self.itemSpace;
+    //    layout.minimumInteritemSpacing = self.itemSpace;
+    //    layout.minimumLineSpacing = self.itemSpace;
     
     
     
@@ -139,7 +139,7 @@
     }
     
     return self.currectImageArray.count + 1;
-
+    
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -169,7 +169,7 @@
         
         if( indexPath.row >= self.currectImageArray.count  ){
             [self tapAddImageView:[collectionView cellForItemAtIndexPath:indexPath]];
-
+            
         }else{
             [self tapImage:indexPath.row];
             
@@ -177,35 +177,40 @@
         
     }
     
-   
+    
     
     
 }
 
 
 -(void)tapImage:(NSInteger)index{
-
-//    UIActionSheet *sheet =  [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消"  destructiveButtonTitle:nil otherButtonTitles:@"查看大图",@"删除", nil];
+    
+    //    UIActionSheet *sheet =  [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消"  destructiveButtonTitle:nil otherButtonTitles:@"查看大图",@"删除", nil];
     UIActionSheet *sheet =  [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消"  destructiveButtonTitle:nil otherButtonTitles:@"删除", nil];
     [sheet showInView:self];
-
+    
     self.willOprationImageIndex = index;
     
-   
+    
 }
 -(void)addImages:(NSArray*)images
 {
     self.currectImageArray = images.mutableCopy;
-//    [self.currectImageArray addObjectsFromArray:images];
-//    if(self.currectImageArray.count > self.maxPic){
-//        [self.currectImageArray removeObjectsInRange:NSMakeRange(self.maxPic, self.currectImageArray.count - self.maxPic)];
-//    }
-//    
-
+    //    [self.currectImageArray addObjectsFromArray:images];
+    //    if(self.currectImageArray.count > self.maxPic){
+    //        [self.currectImageArray removeObjectsInRange:NSMakeRange(self.maxPic, self.currectImageArray.count - self.maxPic)];
+    //    }
+    //
+    
     [self.collectView reloadData];
     dispatch_async(dispatch_get_main_queue(), ^{
         self.collectView .contentOffset = CGPointMake(0, self.collectView.contentSize.height - self.frame.size.height);
-        
+        if(self.collectView.contentOffset.x < 0 ||
+           self.collectView.contentOffset.y < 0
+           ){
+            self.collectView .contentOffset = CGPointMake(0,0);
+            
+        }
         [self.superview setNeedsLayout];
         [self.superview layoutIfNeeded];
         
@@ -213,7 +218,7 @@
     });
     
     
-//    [self.collectView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:[self.collectView numberOfItemsInSection:0] inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
+    //    [self.collectView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:[self.collectView numberOfItemsInSection:0] inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
     
     
 }
@@ -237,9 +242,9 @@
         
     }];
     
-   
-
-
+    
+    
+    
     
     
 }
@@ -254,30 +259,30 @@
         
         [self.currectImageArray removeObjectAtIndex:index];
         [self.lastSelectMoldels removeObjectAtIndex:index];
-   
+        
         [self.collectView reloadData];
-   
+        
     }
     
 }
 -(void)viewBigImage:(NSInteger )index
 {
-//    UIImage *image =[self.currectImageArray objectAtIndex:index];
+    //    UIImage *image =[self.currectImageArray objectAtIndex:index];
     
-//    ZLShowBigImgViewController *vc = [[ZLShowBigImgViewController alloc ] init];
-//    
-//    vc.arraySelectPhotos = self.lastSelectMoldels;
-//    vc.selectIndex = index;
-//    
-//    UIResponder *vc11 = self;
-//    while (1) {
-//        if([vc11 isKindOfClass:[UIViewController class]] ) break;
-//        vc11 = vc11.nextResponder;
-//        
-//    }
-//    
-//    UIViewController *baseVCC = vc11;
-//    [baseVCC.navigationController pushViewController:vc animated:1];
+    //    ZLShowBigImgViewController *vc = [[ZLShowBigImgViewController alloc ] init];
+    //
+    //    vc.arraySelectPhotos = self.lastSelectMoldels;
+    //    vc.selectIndex = index;
+    //
+    //    UIResponder *vc11 = self;
+    //    while (1) {
+    //        if([vc11 isKindOfClass:[UIViewController class]] ) break;
+    //        vc11 = vc11.nextResponder;
+    //
+    //    }
+    //
+    //    UIViewController *baseVCC = vc11;
+    //    [baseVCC.navigationController pushViewController:vc animated:1];
     
     
 }
@@ -285,13 +290,13 @@
 #pragma mark UIActionSheetDelegate
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-//    NSLog(@"%d",buttonIndex);
+    //    NSLog(@"%d",buttonIndex);
     if(buttonIndex == 0){
         ///大图
-//        [self viewBigImage:self.willOprationImageIndex];
+        //        [self viewBigImage:self.willOprationImageIndex];
         //删除
         [self deleteImageAtIndex:self.willOprationImageIndex];
-
+        
     }else if(buttonIndex == 1){
         
         ///取消
@@ -302,11 +307,11 @@
     }
 }
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 @end
