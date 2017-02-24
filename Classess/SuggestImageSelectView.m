@@ -16,7 +16,6 @@
 @interface SuggestImageSelectView ()
 <UICollectionViewDataSource , UICollectionViewDelegate ,UICollectionViewDelegateFlowLayout   , UIActionSheetDelegate >
 
-@property (strong,nonatomic) NSMutableArray *currectImageArray;
 @property (strong,nonatomic) NSMutableArray *lastSelectMoldels;
 @property (assign,nonatomic) NSInteger willOprationImageIndex;
 
@@ -80,10 +79,10 @@
     
     self.collectView = [[UICollectionView alloc] initWithFrame:self.frame collectionViewLayout:layout];
     
-    
+   
     [self.collectView registerClass:[SuggestImageSelectViewCell class] forCellWithReuseIdentifier:NSStringFromClass([SuggestImageSelectViewCell class])];
     [self addSubview:self.collectView];
-    
+
     self.collectView.dataSource = self;
     self.collectView.delegate = self;
     self.collectView.backgroundColor = [UIColor whiteColor];
@@ -97,14 +96,14 @@
     [super layoutSubviews]  ;
     
     self.collectView.frame = self.bounds;
-    
+
     
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectView.collectionViewLayout;
     
     
     layout.itemSize = [self getItemSize];
-    //    layout.minimumInteritemSpacing = self.itemSpace;
-    //    layout.minimumLineSpacing = self.itemSpace;
+//    layout.minimumInteritemSpacing = self.itemSpace;
+//    layout.minimumLineSpacing = self.itemSpace;
     
     
     
@@ -139,7 +138,7 @@
     }
     
     return self.currectImageArray.count + 1;
-    
+
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -148,14 +147,38 @@
     
     UIImage * image = nil;
     if(indexPath.row < self.currectImageArray.count){
-        image = [self.currectImageArray objectAtIndex:indexPath.row];
-    }
-    
-    if(!image){
+        
+        cell.delBtnImage = self.delBtnImage;
+
+        if(self.setImageBlock){
+            image = self.setImageBlock(indexPath,cell.imageBtn);
+            
+        }else{
+            image = [self.currectImageArray objectAtIndex:indexPath.row];
+            
+        }
+
+        if (image) {
+            cell.image = image;
+        }
+        
+        
+    }else{
         image = self.cameraBgIcon;
+
+        cell.delBtnImage = nil;
+        cell.image = image;
+
     }
     
-    cell.image = image;
+//    if(!image){
+//        image = self.cameraBgIcon;
+//    }
+    
+    
+//    cell.image = image;
+    
+    
     
     return cell;
 }
@@ -163,45 +186,62 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if(self.currectImageArray.count >= self.maxPic){
-        [self tapImage:indexPath.row];
+        [self tapImage:indexPath];
         
     }else {
         
         if( indexPath.row >= self.currectImageArray.count  ){
             [self tapAddImageView:[collectionView cellForItemAtIndexPath:indexPath]];
-            
+
         }else{
-            [self tapImage:indexPath.row];
+            [self tapImage:indexPath];
             
         }
         
     }
     
-    
+   
     
     
 }
 
 
--(void)tapImage:(NSInteger)index{
+-(void)tapImage:(NSIndexPath *)indexPath
+{
     
-    //    UIActionSheet *sheet =  [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消"  destructiveButtonTitle:nil otherButtonTitles:@"查看大图",@"删除", nil];
+    self.willOprationImageIndex = indexPath.row;
+    
+
+    if (self.tapImageBlock) {
+        SuggestImageSelectViewCell *cell  = [self.collectView cellForItemAtIndexPath:indexPath];
+        UIButton *btn = nil;
+        if (cell) {
+            btn = cell.imageBtn;
+        }
+        self.tapImageBlock(indexPath,nil,btn);
+        return;
+    }
+
+//    UIActionSheet *sheet =  [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消"  destructiveButtonTitle:nil otherButtonTitles:@"查看大图",@"删除", nil];
     UIActionSheet *sheet =  [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消"  destructiveButtonTitle:nil otherButtonTitles:@"删除", nil];
     [sheet showInView:self];
+
     
-    self.willOprationImageIndex = index;
     
     
 }
 -(void)addImages:(NSArray*)images
 {
-    self.currectImageArray = images.mutableCopy;
-    //    [self.currectImageArray addObjectsFromArray:images];
-    //    if(self.currectImageArray.count > self.maxPic){
-    //        [self.currectImageArray removeObjectsInRange:NSMakeRange(self.maxPic, self.currectImageArray.count - self.maxPic)];
-    //    }
-    //
+//    self.currectImageArray = images.mutableCopy;
     
+    [self.currectImageArray addObjectsFromArray:images.mutableCopy];
+
+//    [self.currectImageArray addObjectsFromArray:images];
+//    if(self.currectImageArray.count > self.maxPic){
+//        [self.currectImageArray removeObjectsInRange:NSMakeRange(self.maxPic, self.currectImageArray.count - self.maxPic)];
+//    }
+//    
+
     [self.collectView reloadData];
     dispatch_async(dispatch_get_main_queue(), ^{
         self.collectView .contentOffset = CGPointMake(0, self.collectView.contentSize.height - self.frame.size.height);
@@ -209,7 +249,7 @@
            self.collectView.contentOffset.y < 0
            ){
             self.collectView .contentOffset = CGPointMake(0,0);
-            
+
         }
         [self.superview setNeedsLayout];
         [self.superview layoutIfNeeded];
@@ -218,7 +258,7 @@
     });
     
     
-    //    [self.collectView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:[self.collectView numberOfItemsInSection:0] inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
+//    [self.collectView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:[self.collectView numberOfItemsInSection:0] inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
     
     
 }
@@ -232,19 +272,30 @@
     actionSheet.maxPreviewCount = 20;
     
     
-    
-    [actionSheet showPreviewPhotoWithSender:[UIApplication sharedApplication].keyWindow.rootViewController animate:YES lastSelectPhotoModels:self.lastSelectMoldels completion:^(NSArray<UIImage *> * _Nonnull selectPhotos, NSArray<ZLSelectPhotoModel *> * _Nonnull selectPhotoModels) {
+    [actionSheet showPreviewPhotoWithSender:[UIApplication sharedApplication].keyWindow.rootViewController animate:YES lastSelectPhotoModels:nil completion:^(NSArray<UIImage *> * _Nonnull selectPhotos, NSArray<ZLSelectPhotoModel *> * _Nonnull selectPhotoModels) {
         // your codes...
         
         [self addImages:selectPhotos];
-        self.lastSelectMoldels = selectPhotoModels.mutableCopy;
+//        self.lastSelectMoldels = selectPhotoModels.mutableCopy;
         
         
     }];
     
     
-    
-    
+
+//    
+//    [actionSheet showPreviewPhotoWithSender:[UIApplication sharedApplication].keyWindow.rootViewController animate:YES lastSelectPhotoModels:self.lastSelectMoldels completion:^(NSArray<UIImage *> * _Nonnull selectPhotos, NSArray<ZLSelectPhotoModel *> * _Nonnull selectPhotoModels) {
+//        // your codes...
+//        
+//        [self addImages:selectPhotos];
+//        self.lastSelectMoldels = selectPhotoModels.mutableCopy;
+//        
+//        
+//    }];
+//    
+   
+
+
     
     
 }
@@ -258,31 +309,31 @@
     if(self.currectImageArray.count > index){
         
         [self.currectImageArray removeObjectAtIndex:index];
-        [self.lastSelectMoldels removeObjectAtIndex:index];
-        
+//        [self.lastSelectMoldels removeObjectAtIndex:index];
+   
         [self.collectView reloadData];
-        
+   
     }
     
 }
 -(void)viewBigImage:(NSInteger )index
 {
-    //    UIImage *image =[self.currectImageArray objectAtIndex:index];
+//    UIImage *image =[self.currectImageArray objectAtIndex:index];
     
-    //    ZLShowBigImgViewController *vc = [[ZLShowBigImgViewController alloc ] init];
-    //
-    //    vc.arraySelectPhotos = self.lastSelectMoldels;
-    //    vc.selectIndex = index;
-    //
-    //    UIResponder *vc11 = self;
-    //    while (1) {
-    //        if([vc11 isKindOfClass:[UIViewController class]] ) break;
-    //        vc11 = vc11.nextResponder;
-    //
-    //    }
-    //
-    //    UIViewController *baseVCC = vc11;
-    //    [baseVCC.navigationController pushViewController:vc animated:1];
+//    ZLShowBigImgViewController *vc = [[ZLShowBigImgViewController alloc ] init];
+//    
+//    vc.arraySelectPhotos = self.lastSelectMoldels;
+//    vc.selectIndex = index;
+//    
+//    UIResponder *vc11 = self;
+//    while (1) {
+//        if([vc11 isKindOfClass:[UIViewController class]] ) break;
+//        vc11 = vc11.nextResponder;
+//        
+//    }
+//    
+//    UIViewController *baseVCC = vc11;
+//    [baseVCC.navigationController pushViewController:vc animated:1];
     
     
 }
@@ -290,13 +341,13 @@
 #pragma mark UIActionSheetDelegate
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    //    NSLog(@"%d",buttonIndex);
+//    NSLog(@"%d",buttonIndex);
     if(buttonIndex == 0){
         ///大图
-        //        [self viewBigImage:self.willOprationImageIndex];
+//        [self viewBigImage:self.willOprationImageIndex];
         //删除
         [self deleteImageAtIndex:self.willOprationImageIndex];
-        
+
     }else if(buttonIndex == 1){
         
         ///取消
@@ -306,12 +357,16 @@
         
     }
 }
+
+#pragma mark setter-getter
+
+
 /*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect {
- // Drawing code
- }
- */
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+}
+*/
 
 @end

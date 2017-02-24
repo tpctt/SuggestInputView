@@ -9,7 +9,7 @@
 #import "SuggestImageSelectViewCell.h"
 @interface SuggestImageSelectViewCell()
 
-@property (strong,nonatomic) UIButton *imageBtn;
+@property (strong,nonatomic) UIButton *delBtn;
 
 @end
 
@@ -60,10 +60,29 @@
     
 }
 
+-(void)setDelBtnImage:(UIImage *)delBtnImage
+{
+    if(_delBtnImage == delBtnImage) return;
+    _delBtnImage = delBtnImage;
+    
+    [self.delBtn setImage:_delBtnImage forState:0];
+    
+    
+    self.delBtn.hidden = (self.delBtnImage == nil);
+
+    [self.delBtn sizeToFit];
+
+    
+}
+
 -(void)layoutSubviews
 {
     [super layoutSubviews];
     self.imageBtn.frame = self.bounds;
+    
+    self.delBtn.layer.position = CGPointMake(self.frame.size.width , 0);
+    
+    
     
 }
 ///////////////////
@@ -71,6 +90,16 @@
     self.imageBtn = [[UIButton alloc] initWithFrame:self.frame];
     [self.contentView addSubview:self.imageBtn];
     [self.imageBtn setUserInteractionEnabled:NO];
+    
+    
+    self.delBtn = [[UIButton alloc] init];
+    [self addSubview:self.delBtn];
+    [self.delBtn setUserInteractionEnabled:NO];
+    
+    
+    self.delBtn.layer.anchorPoint = CGPointMake( 1, 0);
+    
+    
     
 }
 @end

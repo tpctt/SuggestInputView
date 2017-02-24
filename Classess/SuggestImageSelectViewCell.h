@@ -10,5 +10,9 @@
 
 @interface SuggestImageSelectViewCell : UICollectionViewCell
 @property (strong,nonatomic) UIImage *image;
+@property (strong,nonatomic) UIButton *imageBtn;
+
+@property (strong,nonatomic) UIImage *delBtnImage;
+
 
 @end
