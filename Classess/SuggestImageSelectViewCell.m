@@ -53,7 +53,7 @@
 
 -(void)setImage:(UIImage *)image
 {
-    if(_image == image) return;
+//    if(_image == image) return;
     _image = image;
     
     [self.imageBtn setImage:_image forState:0];
