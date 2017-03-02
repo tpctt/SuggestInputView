@@ -74,6 +74,17 @@
     
     [self subCommonInit];
     
+    
+    NSBundle *bundle = [NSBundle mainBundle];
+//    bundle = [NSBundle bundleWithIdentifier:@"com.inwhoop.chuanchuan.SuggestInputViewBundle"];
+    bundle = [NSBundle bundleWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"SuggestInputViewBundle2" ofType:@"bundle"]];
+
+    
+    NSString *file = [bundle pathForResource:@"cameraIcon" ofType:@"tiff"];
+//    NSString *file = [bundle pathForResource:@"cameraIcon@2x" ofType:@"png"];
+    
+    self.cameraBgIcon = [[UIImage imageWithContentsOfFile:file] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+
 }
 
 

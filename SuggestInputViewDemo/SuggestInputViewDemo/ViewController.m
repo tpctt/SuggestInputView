@@ -32,8 +32,8 @@
     self.suggestInputView = [[SuggestInputView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.suggestInputView];   
     
-    UIImage *image = [UIImage imageNamed:@"cameraIcon"];
-    self.suggestInputView.cameraBgIcon = image;
+//    UIImage *image = [UIImage imageNamed:@"cameraIcon"];
+//    self.suggestInputView.cameraBgIcon = image;
     
 }
 

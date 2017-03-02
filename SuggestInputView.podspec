@@ -14,7 +14,8 @@ Pod::Spec.new do |s|
   s.dependency 'ZLPhotoBrowser'#, '~> 2.0.2'
 
   s.source_files = 'Classess/**/*.{h,m,mm}'
-  
+  s.resource     = 'resource/*.bundle'
+
   # s.library		= "z.1.1.3","stdc++","sqlite3"
   # s.subspec 'TableViewWithBlock' do |sp|
   #   sp.source_files = 'TableViewWithBlock/**/*.{h,m,mm}'
