@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		223B829D1E67D06100F43770 /* SuggestInputViewBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 223B829C1E67D06100F43770 /* SuggestInputViewBundle.bundle */; };
-		223B82A31E67EA6500F43770 /* SuggestInputViewBundle2.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 223B82A21E67EA6500F43770 /* SuggestInputViewBundle2.bundle */; };
+		223B82A51E67F80A00F43770 /* SuggestInputViewBundle2.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 223B82A41E67F80A00F43770 /* SuggestInputViewBundle2.bundle */; };
 		226FC76E1E037ED200B7A8AB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 226FC76D1E037ED200B7A8AB /* Launch Screen.storyboard */; };
 		22AB5E211DFE40EA00739063 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AB5E201DFE40EA00739063 /* main.m */; };
 		22AB5E241DFE40EA00739063 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AB5E231DFE40EA00739063 /* AppDelegate.m */; };
@@ -22,7 +22,7 @@
 
 /* Begin PBXFileReference section */
 		223B829C1E67D06100F43770 /* SuggestInputViewBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SuggestInputViewBundle.bundle; sourceTree = "<group>"; };
-		223B82A21E67EA6500F43770 /* SuggestInputViewBundle2.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SuggestInputViewBundle2.bundle; path = resource.xcassets/SuggestInputViewBundle2.bundle; sourceTree = "<group>"; };
+		223B82A41E67F80A00F43770 /* SuggestInputViewBundle2.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SuggestInputViewBundle2.bundle; sourceTree = "<group>"; };
 		226FC76D1E037ED200B7A8AB /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		22AB5E1C1DFE40EA00739063 /* SuggestInputViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuggestInputViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22AB5E201DFE40EA00739063 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -114,8 +114,8 @@
 		22AB5E9C1DFE464500739063 /* resource */ = {
 			isa = PBXGroup;
 			children = (
-				223B82A21E67EA6500F43770 /* SuggestInputViewBundle2.bundle */,
 				22AB5E9D1DFE464500739063 /* resource.xcassets */,
+				223B82A41E67F80A00F43770 /* SuggestInputViewBundle2.bundle */,
 				223B829C1E67D06100F43770 /* SuggestInputViewBundle.bundle */,
 			);
 			name = resource;
@@ -201,10 +201,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				223B82A31E67EA6500F43770 /* SuggestInputViewBundle2.bundle in Resources */,
 				226FC76E1E037ED200B7A8AB /* Launch Screen.storyboard in Resources */,
 				223B829D1E67D06100F43770 /* SuggestInputViewBundle.bundle in Resources */,
 				22AB5E9E1DFE464500739063 /* resource.xcassets in Resources */,
+				223B82A51E67F80A00F43770 /* SuggestInputViewBundle2.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
