@@ -16,6 +16,8 @@ typedef UIImage *(^SuggestImageSetImageBlock)(NSIndexPath *path ,UIButton *image
 @interface SuggestImageSelectView : UIView
 
 @property (strong,nonatomic) UICollectionView *collectView;
+
+@property(assign,nonatomic) BOOL hideCameraBtn;
 @property(strong,nonatomic) UIImage *cameraBgIcon;
 @property(strong,nonatomic) UIImage *delBtnImage;
 

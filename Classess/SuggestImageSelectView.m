@@ -102,8 +102,8 @@
     
     
     layout.itemSize = [self getItemSize];
-//    layout.minimumInteritemSpacing = self.itemSpace;
-//    layout.minimumLineSpacing = self.itemSpace;
+    layout.minimumInteritemSpacing = self.itemSpace;
+    layout.minimumLineSpacing = self.itemSpace;
     
     
     
@@ -111,22 +111,44 @@
 
 -(CGSize)getItemSize
 {
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectView.collectionViewLayout;
+    UIEdgeInsets inset =  layout.sectionInset ;
+
     
-    CGFloat itemW = (self.frame.size.width - (self.numberOfRow + 1) * self.itemSpace) / self.numberOfRow ;
-    itemW = floorf(itemW) - 5;
+    CGFloat itemW = ((self.frame.size.width -inset.left -inset.right) - (self.numberOfRow -1 ) * self.itemSpace) / self.numberOfRow ;
+    itemW = floorf(itemW) - 0 ;
     return CGSizeMake(itemW, itemW);;
     
 }
 -(CGFloat)getCollectViewFitSize
 {
-    if (self.currectImageArray.count > self.numberOfRow) {
-        CGFloat rowH = 2 *[self getItemSize].height;
-        
-        rowH += self.itemSpace *(self.currectImageArray.count/self.numberOfRow + 4);
-        
-        return rowH  ;
+    
+    NSInteger totolNum = self.currectImageArray.count;
+    if (totolNum < self.maxPic) {
+        if (self.hideCameraBtn == NO) {
+            totolNum += 1;
+        }
     }
-    return [self getItemSize].height;
+    
+    
+    NSInteger rows = totolNum/self.numberOfRow + ((totolNum%self.numberOfRow )>0?1:0);
+    CGFloat rowH = [self getItemSize].height;
+    rowH = ceil(rowH)  ;
+    
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectView.collectionViewLayout;
+    UIEdgeInsets inset =  layout.sectionInset ;
+    CGFloat totalHeight = rowH * rows + (rows - 1) *self.itemSpace + inset.top + inset.bottom;
+    
+    return totalHeight;
+//    
+//    if (self.currectImageArray.count > self.numberOfRow) {
+//        CGFloat rowH = 2 *[self getItemSize].height;
+//        
+//        rowH += self.itemSpace *(self.currectImageArray.count/self.numberOfRow + 4);
+//        
+//        return rowH  ;
+//    }
+//    return [self getItemSize].height;
     
 }
 
@@ -137,7 +159,7 @@
         return self.currectImageArray.count;
     }
     
-    return self.currectImageArray.count + 1;
+    return self.currectImageArray.count + (self.hideCameraBtn?0:1);
 
 }
 
@@ -197,12 +219,7 @@
             [self tapImage:indexPath];
             
         }
-        
     }
-    
-   
-    
-    
 }
 
 
