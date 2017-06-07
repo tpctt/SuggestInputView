@@ -284,7 +284,12 @@
     
     ZLPhotoActionSheet *actionSheet = [[ZLPhotoActionSheet alloc] init];
     //设置最大选择数量
-    actionSheet.maxSelectCount = self.maxPic;
+    NSInteger maxPic = self.maxPic - self.currectImageArray.count ;
+    ///这里注意是不是 lastSelectPhotoModels 相关
+    if (maxPic <= 0 ) {
+        maxPic = 0;
+    }
+    actionSheet.maxSelectCount = maxPic;
     //设置预览图最大数目
     actionSheet.maxPreviewCount = 20;
     
