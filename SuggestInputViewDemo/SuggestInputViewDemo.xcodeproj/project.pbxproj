@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		222A6FEE1EEFE11D0082A05B /* SuggestInputViewFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 222A6FEC1EEFE11D0082A05B /* SuggestInputViewFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		222A6FF11EEFE11D0082A05B /* SuggestInputView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222A6FEA1EEFE11D0082A05B /* SuggestInputView.framework */; };
+		222A6FF21EEFE11D0082A05B /* SuggestInputView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 222A6FEA1EEFE11D0082A05B /* SuggestInputView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		222A6FF71EEFE13D0082A05B /* SuggestInputViewBundle2.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 223B82A41E67F80A00F43770 /* SuggestInputViewBundle2.bundle */; };
+		222A6FF81EEFE13D0082A05B /* SuggestInputViewBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 223B829C1E67D06100F43770 /* SuggestInputViewBundle.bundle */; };
+		222A6FF91EEFE13F0082A05B /* SuggestImageSelectView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22AB5E371DFE412800739063 /* SuggestImageSelectView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		222A6FFA1EEFE13F0082A05B /* SuggestImageSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AB5E381DFE412800739063 /* SuggestImageSelectView.m */; };
+		222A6FFB1EEFE13F0082A05B /* SuggestImageSelectViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 22AB5E391DFE412800739063 /* SuggestImageSelectViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		222A6FFC1EEFE13F0082A05B /* SuggestImageSelectViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AB5E3A1DFE412800739063 /* SuggestImageSelectViewCell.m */; };
+		222A6FFD1EEFE13F0082A05B /* SuggestInputView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22AB5E3B1DFE412800739063 /* SuggestInputView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		222A6FFE1EEFE13F0082A05B /* SuggestInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AB5E3C1DFE412800739063 /* SuggestInputView.m */; };
 		223B829D1E67D06100F43770 /* SuggestInputViewBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 223B829C1E67D06100F43770 /* SuggestInputViewBundle.bundle */; };
 		223B82A51E67F80A00F43770 /* SuggestInputViewBundle2.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 223B82A41E67F80A00F43770 /* SuggestInputViewBundle2.bundle */; };
 		226FC76E1E037ED200B7A8AB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 226FC76D1E037ED200B7A8AB /* Launch Screen.storyboard */; };
@@ -18,9 +29,37 @@
 		22AB5E3F1DFE412800739063 /* SuggestInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AB5E3C1DFE412800739063 /* SuggestInputView.m */; };
 		22AB5E9E1DFE464500739063 /* resource.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22AB5E9D1DFE464500739063 /* resource.xcassets */; };
 		3DF556CA87B3B69D3C65C230 /* libPods-SuggestInputViewDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C7BEC5F931D982A7DB85167 /* libPods-SuggestInputViewDemo.a */; };
+		F53E6A9C7581AA99EAA4F0A4 /* libPods-SuggestInputView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85E4A42F7EE6DF58D33D6756 /* libPods-SuggestInputView.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		222A6FEF1EEFE11D0082A05B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 22AB5E141DFE40EA00739063 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 222A6FE91EEFE11D0082A05B;
+			remoteInfo = SuggestInputView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		222A6FF61EEFE11D0082A05B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				222A6FF21EEFE11D0082A05B /* SuggestInputView.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		222A6FEA1EEFE11D0082A05B /* SuggestInputView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SuggestInputView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		222A6FEC1EEFE11D0082A05B /* SuggestInputViewFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuggestInputViewFramework.h; sourceTree = "<group>"; };
+		222A6FED1EEFE11D0082A05B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		223B829C1E67D06100F43770 /* SuggestInputViewBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SuggestInputViewBundle.bundle; sourceTree = "<group>"; };
 		223B82A41E67F80A00F43770 /* SuggestInputViewBundle2.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SuggestInputViewBundle2.bundle; sourceTree = "<group>"; };
 		226FC76D1E037ED200B7A8AB /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -41,26 +80,48 @@
 		3C7BEC5F931D982A7DB85167 /* libPods-SuggestInputViewDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SuggestInputViewDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		47921CB6C7010E5A186AB2AB /* Pods-SuggestInputViewDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuggestInputViewDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SuggestInputViewDemo/Pods-SuggestInputViewDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		6F25516497DDF1A33F7CE76D /* Pods-SuggestInputViewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuggestInputViewDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SuggestInputViewDemo/Pods-SuggestInputViewDemo.release.xcconfig"; sourceTree = "<group>"; };
+		7EA066345A1FDA6F54B01BCE /* Pods-SuggestInputView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuggestInputView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SuggestInputView/Pods-SuggestInputView.debug.xcconfig"; sourceTree = "<group>"; };
+		85E4A42F7EE6DF58D33D6756 /* libPods-SuggestInputView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SuggestInputView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADE4793655DBC57E6EA90604 /* Pods-SuggestInputView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuggestInputView.release.xcconfig"; path = "Pods/Target Support Files/Pods-SuggestInputView/Pods-SuggestInputView.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		222A6FE61EEFE11D0082A05B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F53E6A9C7581AA99EAA4F0A4 /* libPods-SuggestInputView.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		22AB5E191DFE40EA00739063 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				3DF556CA87B3B69D3C65C230 /* libPods-SuggestInputViewDemo.a in Frameworks */,
+				222A6FF11EEFE11D0082A05B /* SuggestInputView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		222A6FEB1EEFE11D0082A05B /* SuggestInputView */ = {
+			isa = PBXGroup;
+			children = (
+				222A6FEC1EEFE11D0082A05B /* SuggestInputViewFramework.h */,
+				222A6FED1EEFE11D0082A05B /* Info.plist */,
+			);
+			path = SuggestInputView;
+			sourceTree = "<group>";
+		};
 		22AB5E131DFE40EA00739063 = {
 			isa = PBXGroup;
 			children = (
 				22AB5E9C1DFE464500739063 /* resource */,
 				22AB5E361DFE412800739063 /* Classess */,
 				22AB5E1E1DFE40EA00739063 /* SuggestInputViewDemo */,
+				222A6FEB1EEFE11D0082A05B /* SuggestInputView */,
 				22AB5E1D1DFE40EA00739063 /* Products */,
 				F3BD04D16CBB9B3A0645E4E4 /* Pods */,
 				E16EFF0A98B5909EF781E9A3 /* Frameworks */,
@@ -71,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				22AB5E1C1DFE40EA00739063 /* SuggestInputViewDemo.app */,
+				222A6FEA1EEFE11D0082A05B /* SuggestInputView.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				3C7BEC5F931D982A7DB85167 /* libPods-SuggestInputViewDemo.a */,
+				85E4A42F7EE6DF58D33D6756 /* libPods-SuggestInputView.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -135,13 +198,49 @@
 			children = (
 				47921CB6C7010E5A186AB2AB /* Pods-SuggestInputViewDemo.debug.xcconfig */,
 				6F25516497DDF1A33F7CE76D /* Pods-SuggestInputViewDemo.release.xcconfig */,
+				7EA066345A1FDA6F54B01BCE /* Pods-SuggestInputView.debug.xcconfig */,
+				ADE4793655DBC57E6EA90604 /* Pods-SuggestInputView.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		222A6FE71EEFE11D0082A05B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				222A6FF91EEFE13F0082A05B /* SuggestImageSelectView.h in Headers */,
+				222A6FFD1EEFE13F0082A05B /* SuggestInputView.h in Headers */,
+				222A6FEE1EEFE11D0082A05B /* SuggestInputViewFramework.h in Headers */,
+				222A6FFB1EEFE13F0082A05B /* SuggestImageSelectViewCell.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		222A6FE91EEFE11D0082A05B /* SuggestInputView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 222A6FF51EEFE11D0082A05B /* Build configuration list for PBXNativeTarget "SuggestInputView" */;
+			buildPhases = (
+				EC63BEDADE431FEF30225972 /* [CP] Check Pods Manifest.lock */,
+				222A6FE51EEFE11D0082A05B /* Sources */,
+				222A6FE61EEFE11D0082A05B /* Frameworks */,
+				222A6FE71EEFE11D0082A05B /* Headers */,
+				222A6FE81EEFE11D0082A05B /* Resources */,
+				207D7E8EEAFA0AFA80FDB72A /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SuggestInputView;
+			productName = SuggestInputView;
+			productReference = 222A6FEA1EEFE11D0082A05B /* SuggestInputView.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		22AB5E1B1DFE40EA00739063 /* SuggestInputViewDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 22AB5E331DFE40EA00739063 /* Build configuration list for PBXNativeTarget "SuggestInputViewDemo" */;
@@ -152,10 +251,12 @@
 				22AB5E1A1DFE40EA00739063 /* Resources */,
 				8BE46BBFB77879A230848F3F /* [CP] Embed Pods Frameworks */,
 				50D662FC65BDA0C620F313EA /* [CP] Copy Pods Resources */,
+				222A6FF61EEFE11D0082A05B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				222A6FF01EEFE11D0082A05B /* PBXTargetDependency */,
 			);
 			name = SuggestInputViewDemo;
 			productName = SuggestInputViewDemo;
@@ -171,6 +272,11 @@
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = timRabbit;
 				TargetAttributes = {
+					222A6FE91EEFE11D0082A05B = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = TGZ32BA6KS;
+						ProvisioningStyle = Automatic;
+					};
 					22AB5E1B1DFE40EA00739063 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = TGZ32BA6KS;
@@ -192,11 +298,21 @@
 			projectRoot = "";
 			targets = (
 				22AB5E1B1DFE40EA00739063 /* SuggestInputViewDemo */,
+				222A6FE91EEFE11D0082A05B /* SuggestInputView */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		222A6FE81EEFE11D0082A05B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				222A6FF81EEFE13D0082A05B /* SuggestInputViewBundle.bundle in Resources */,
+				222A6FF71EEFE13D0082A05B /* SuggestInputViewBundle2.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		22AB5E1A1DFE40EA00739063 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -211,6 +327,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		207D7E8EEAFA0AFA80FDB72A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SuggestInputView/Pods-SuggestInputView-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		50D662FC65BDA0C620F313EA /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -241,6 +372,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SuggestInputViewDemo/Pods-SuggestInputViewDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		EC63BEDADE431FEF30225972 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		F8337A7C5490F80426A3FF04 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -253,12 +399,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		222A6FE51EEFE11D0082A05B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				222A6FFA1EEFE13F0082A05B /* SuggestImageSelectView.m in Sources */,
+				222A6FFC1EEFE13F0082A05B /* SuggestImageSelectViewCell.m in Sources */,
+				222A6FFE1EEFE13F0082A05B /* SuggestInputView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		22AB5E181DFE40EA00739063 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -274,7 +430,67 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		222A6FF01EEFE11D0082A05B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 222A6FE91EEFE11D0082A05B /* SuggestInputView */;
+			targetProxy = 222A6FEF1EEFE11D0082A05B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		222A6FF31EEFE11D0082A05B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EA066345A1FDA6F54B01BCE /* Pods-SuggestInputView.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = TGZ32BA6KS;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SuggestInputView/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Nothing.SuggestInputView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		222A6FF41EEFE11D0082A05B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ADE4793655DBC57E6EA90604 /* Pods-SuggestInputView.release.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = TGZ32BA6KS;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SuggestInputView/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Nothing.SuggestInputView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		22AB5E311DFE40EA00739063 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -394,6 +610,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		222A6FF51EEFE11D0082A05B /* Build configuration list for PBXNativeTarget "SuggestInputView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				222A6FF31EEFE11D0082A05B /* Debug */,
+				222A6FF41EEFE11D0082A05B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		22AB5E171DFE40EA00739063 /* Build configuration list for PBXProject "SuggestInputViewDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

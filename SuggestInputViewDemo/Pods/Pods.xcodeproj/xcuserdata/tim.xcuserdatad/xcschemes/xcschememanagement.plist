@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-SuggestInputView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SuggestInputViewDemo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>999CF86D64255D8D5B099F64FBCB2324</key>
+		<key>4D1A90D9C87B319633646205F28AF0ED</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>F4BEB57B74A57688AD9BD101500DA0FD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F87A6924766882B06FDE68BFFC79BDD8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

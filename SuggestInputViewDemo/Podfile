@@ -11,3 +11,9 @@ end
 
 
 
+target:SuggestInputView do
+    pod 'ZLPhotoBrowser'
+    
+    
+end
+

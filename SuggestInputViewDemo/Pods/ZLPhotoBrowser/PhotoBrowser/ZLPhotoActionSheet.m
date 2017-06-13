@@ -126,7 +126,8 @@ typedef void (^handler)(NSArray<UIImage *> *selectPhotos, NSArray<ZLSelectPhotoM
     PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
     [self addAssociatedOnSender];
     if (preview) {
-        if (status == PHAuthorizationStatusAuthorized) {
+       if (status == PHAuthorizationStatusAuthorized ||
+            status == PHAuthorizationStatusNotDetermined ) {
             [self loadPhotoFromAlbum];
             [self show];
         } else if (status == PHAuthorizationStatusRestricted ||

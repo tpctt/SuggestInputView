@@ -1,12 +1,12 @@
 PODS:
-  - ZLPhotoBrowser (2.0.2)
+  - ZLPhotoBrowser (2.5.2)
 
 DEPENDENCIES:
   - ZLPhotoBrowser
 
 SPEC CHECKSUMS:
-  ZLPhotoBrowser: 1fe6c127883140e0ffe56adc2fdafbd82c309d22
+  ZLPhotoBrowser: 93dfb0cdbb770bb4b767aec61e0cbf8ebfd3a78d
 
-PODFILE CHECKSUM: a1837a1fd9c33229e478b70455e30adfb8c0602b
+PODFILE CHECKSUM: 9b32315deaabb37ffe2cb60d49c4f00d3c16f3c5
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.1
