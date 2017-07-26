@@ -65,11 +65,11 @@
 
 ///////////////////
 -(void)commonInit{
-    self.maxPic = 9;
-    self.numberOfRow = 4;
-    self.itemSpace = 5;
+    self.maxPic = self.maxPic?:9;
+    self.numberOfRow = self.numberOfRow?:4;
+    self.itemSpace = self.itemSpace?:5;
     
-    self.currectImageArray = [NSMutableArray array];
+    self.currectImageArray = self.currectImageArray?:[NSMutableArray array];
     
     
     
@@ -117,7 +117,11 @@
     
     CGFloat itemW = ((self.frame.size.width -inset.left -inset.right) - (self.numberOfRow -1 ) * self.itemSpace) / self.numberOfRow ;
     itemW = floorf(itemW) - 0 ;
-    return CGSizeMake(itemW, itemW);;
+    if (self.itemHeight <= 0 ) {
+        self.itemHeight = itemW;
+    }
+    
+    return CGSizeMake(itemW, self.itemHeight);;
     
 }
 -(CGFloat)getCollectViewFitSize

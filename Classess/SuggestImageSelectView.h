@@ -23,6 +23,8 @@ typedef UIImage *(^SuggestImageSetImageBlock)(NSIndexPath *path ,UIButton *image
 
 ///item 的间距
 @property(assign,nonatomic) CGFloat itemSpace;
+///item 高度
+@property(assign,nonatomic) CGFloat itemHeight;
 
 
 @property(assign,nonatomic) NSInteger maxPic;
