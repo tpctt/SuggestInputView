@@ -21,9 +21,10 @@ typedef void(^SuggestInputBlock)(NSString *text , NSArray <UIImage *> * imagesAr
 @end
 ````
 
- <br>
-<br>![](https://github.com/tpctt/SuggestInputView/blob/master/img/1.png)
- ![](https://github.com/tpctt/SuggestInputView/blob/master/img/2.png)
+
+
+ ![image](img/1.png)
+ ![image](https://github.com/tpctt/SuggestInputView/blob/master/img/2.png)
 
 
 也支持独立 图片选择部分出来
