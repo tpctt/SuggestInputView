@@ -293,20 +293,17 @@
     if (maxPic <= 0 ) {
         maxPic = 0;
     }
-    actionSheet.maxSelectCount = maxPic;
+    actionSheet.configuration.maxSelectCount = maxPic;
     //设置预览图最大数目
-    actionSheet.maxPreviewCount = 20;
+    actionSheet.configuration.maxPreviewCount = 20;
     
+    actionSheet.selectImageBlock = ^(NSArray<UIImage *> * _Nullable images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
+        [self addImages:images];
+
+    };
     
-    [actionSheet showPreviewPhotoWithSender:[UIApplication sharedApplication].keyWindow.rootViewController animate:YES lastSelectPhotoModels:nil completion:^(NSArray<UIImage *> * _Nonnull selectPhotos, NSArray<ZLSelectPhotoModel *> * _Nonnull selectPhotoModels) {
-        // your codes...
-        
-        [self addImages:selectPhotos];
-//        self.lastSelectMoldels = selectPhotoModels.mutableCopy;
-        
-        
-    }];
-    
+    [actionSheet showPreviewAnimated:1];
+
     
 
 //    
