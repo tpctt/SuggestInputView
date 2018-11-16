@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'F4BEB57B74A57688AD9BD101500DA0FD'
-               BlueprintName = 'Pods-SuggestInputViewDemo'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libPods-SuggestInputViewDemo.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "33F3DEA6CF3F2C8D997C85B36F2C7571"
+               BlueprintName = "Pods-SuggestInputViewDemo"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libPods-SuggestInputViewDemo.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

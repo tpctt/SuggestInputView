@@ -249,7 +249,6 @@
 				22AB5E181DFE40EA00739063 /* Sources */,
 				22AB5E191DFE40EA00739063 /* Frameworks */,
 				22AB5E1A1DFE40EA00739063 /* Resources */,
-				8BE46BBFB77879A230848F3F /* [CP] Embed Pods Frameworks */,
 				50D662FC65BDA0C620F313EA /* [CP] Copy Pods Resources */,
 				222A6FF61EEFE11D0082A05B /* Embed Frameworks */,
 			);
@@ -333,13 +332,20 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SuggestInputView/Pods-SuggestInputView-resources.sh",
+				"${PODS_ROOT}/ZLPhotoBrowser/PhotoBrowser/resource/ZLPhotoActionSheet.xib",
+				"${PODS_ROOT}/ZLPhotoBrowser/PhotoBrowser/resource/ZLPhotoBrowserCell.xib",
+				"${PODS_ROOT}/ZLPhotoBrowser/PhotoBrowser/resource/ZLPhotoBrowser.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ZLPhotoActionSheet.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ZLPhotoBrowserCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ZLPhotoBrowser.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SuggestInputView/Pods-SuggestInputView-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SuggestInputView/Pods-SuggestInputView-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		50D662FC65BDA0C620F313EA /* [CP] Copy Pods Resources */ = {
@@ -348,28 +354,20 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SuggestInputViewDemo/Pods-SuggestInputViewDemo-resources.sh",
+				"${PODS_ROOT}/ZLPhotoBrowser/PhotoBrowser/resource/ZLPhotoActionSheet.xib",
+				"${PODS_ROOT}/ZLPhotoBrowser/PhotoBrowser/resource/ZLPhotoBrowserCell.xib",
+				"${PODS_ROOT}/ZLPhotoBrowser/PhotoBrowser/resource/ZLPhotoBrowser.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ZLPhotoActionSheet.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ZLPhotoBrowserCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ZLPhotoBrowser.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SuggestInputViewDemo/Pods-SuggestInputViewDemo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8BE46BBFB77879A230848F3F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SuggestInputViewDemo/Pods-SuggestInputViewDemo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SuggestInputViewDemo/Pods-SuggestInputViewDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EC63BEDADE431FEF30225972 /* [CP] Check Pods Manifest.lock */ = {
@@ -378,13 +376,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SuggestInputView-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F8337A7C5490F80426A3FF04 /* [CP] Check Pods Manifest.lock */ = {
@@ -393,13 +394,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SuggestInputViewDemo-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

@@ -302,7 +302,7 @@
 
     };
     
-    [actionSheet showPreviewAnimated:1];
+    [actionSheet showPreviewAnimated:1 sender:[UIApplication sharedApplication].keyWindow.rootViewController];
 
     
 

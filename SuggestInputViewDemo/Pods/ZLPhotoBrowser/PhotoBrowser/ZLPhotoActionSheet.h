@@ -5,67 +5,92 @@
 //  Created by long on 15/11/25.
 //  Copyright © 2015年 long. All rights reserved.
 //
+//pods version 2.5.5 - 2017.12.13 update
 
 #import <UIKit/UIKit.h>
+#import "ZLPhotoConfiguration.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class ZLSelectPhotoModel;
+@class ZLPhotoModel;
+@class PHAsset;
+
 
 @interface ZLPhotoActionSheet : UIView
 
 @property (nonatomic, weak) UIViewController *sender;
 
-/** 最大选择数 default is 10 */
-@property (nonatomic, assign) NSInteger maxSelectCount;
+/**相册框架配置，默认为 [ZLPhotoConfiguration defaultPhotoConfiguration]*/
+@property (nonatomic, strong) ZLPhotoConfiguration *configuration;
 
-/** 预览图最大显示数 default is 20 */
-@property (nonatomic, assign) NSInteger maxPreviewCount;
+/**
+ 已选择的asset对象数组，用于标记已选择的图片
+ */
+@property (nonatomic, strong, nullable) NSMutableArray<PHAsset *> *arrSelectedAssets;
+
+
+/**
+ 选择照片回调，回调解析好的图片、对应的asset对象、是否原图
+ pod 2.2.6版本之后 统一通过selectImageBlock回调
+ */
+@property (nonatomic, copy) void (^selectImageBlock)(NSArray<UIImage *> *__nullable images, NSArray<PHAsset *> *assets, BOOL isOriginal);
 
 - (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
 
-- (void)showWithSender:(UIViewController *)sender
-               animate:(BOOL)animate
-        lastSelectPhotoModels:(NSArray<ZLSelectPhotoModel *> * _Nullable)lastSelectPhotoModels
-            completion:(void (^)(NSArray<UIImage *> *selectPhotos, NSArray<ZLSelectPhotoModel *> *selectPhotoModels))completion NS_DEPRECATED(2.0, 2.0, 2.0, 8.0, "Use - showPreviewPhotoWithSender:animate:lastSelectPhotoModels:completion:");
 
 /**
- * @brief 显示多选照片视图，带预览效果
- * @param sender
- *              调用该控件的视图控制器
- * @param animate
- *              是否显示动画效果
- * @param lastSelectPhotoModels
- *              已选择的PHAsset，再次调用"showWithSender:animate:lastSelectPhotoModels:completion:"方法之前，可以把上次回调中selectPhotoModels赋值给该属性，便可实现记录上次选择照片的功能，若不需要记录上次选择照片的功能，则该值传nil即可
- * @param completion
- *              完成回调
+ 显示ZLPhotoActionSheet选择照片视图
+ 
+ @warning 需提前赋值 sender 对象
+ @param animate 是否显示动画效果
  */
-- (void)showPreviewPhotoWithSender:(UIViewController *)sender
-                 animate:(BOOL)animate
-   lastSelectPhotoModels:(NSArray<ZLSelectPhotoModel *> * _Nullable)lastSelectPhotoModels
-              completion:(void (^)(NSArray<UIImage *> *selectPhotos, NSArray<ZLSelectPhotoModel *> *selectPhotoModels))completion;
+- (void)showPreviewAnimated:(BOOL)animate;
+
 
 /**
- * @brief 显示多选照片视图，直接进入相册选择界面
- * @param sender
- *              调用该控件的视图控制器
- * @param lastSelectPhotoModels
- *              已选择的PHAsset，再次调用"showWithSender:animate:lastSelectPhotoModels:completion:"方法之前，可以把上次回调中selectPhotoModels赋值给该属性，便可实现记录上次选择照片的功能，若不需要记录上次选择照片的功能，则该值传nil即可
- * @param completion
- *              完成回调
+ 显示ZLPhotoActionSheet选择照片视图
+
+ @param animate 是否显示动画效果
+ @param sender 调用该对象的控制器
  */
-- (void)showPhotoLibraryWithSender:(UIViewController *)sender
-             lastSelectPhotoModels:(NSArray<ZLSelectPhotoModel *> * _Nullable)lastSelectPhotoModels
-                        completion:(void (^)(NSArray<UIImage *> *selectPhotos, NSArray<ZLSelectPhotoModel *> *selectPhotoModels))completion;
+- (void)showPreviewAnimated:(BOOL)animate sender:(UIViewController *)sender;
+
+
+/**
+ 直接进入相册选择界面
+ */
+- (void)showPhotoLibrary;
+
+/**
+ 直接进入相册选择界面
+ 
+ @param sender 调用该对象的控制器
+ */
+- (void)showPhotoLibraryWithSender:(UIViewController *)sender;
+
+
+/**
+ 提供 预览用户已选择的照片，并可以取消已选择的照片
+
+ @param photos 已选择的uiimage照片数组
+ @param assets 已选择的phasset照片数组
+ @param index 点击的照片索引
+ @param isOriginal 是否为原图
+ */
+- (void)previewSelectedPhotos:(NSArray<UIImage *> *)photos assets:(NSArray<PHAsset *> *)assets index:(NSInteger)index isOriginal:(BOOL)isOriginal;
+
+
+/**
+ 提供 预览照片网络/本地图片
+ 
+ @param photos 接收对象 UIImage / NSURL(网络url或本地图片url)
+ @param index 点击的照片索引
+ @param hideToolBar 是否隐藏底部工具栏和导航右上角选择按钮
+ @param complete 回调 (数组内为接收的UIImage / NSUrl 对象)
+ */
+- (void)previewPhotos:(NSArray *)photos index:(NSInteger)index hideToolBar:(BOOL)hideToolBar complete:(void (^)(NSArray *photos))complete;
 
 NS_ASSUME_NONNULL_END
 
 @end
 
-
-
-@interface CustomerNavgationController : UINavigationController
-
-@property (nonatomic, assign) UIStatusBarStyle previousStatusBarStyle;
-
-@end

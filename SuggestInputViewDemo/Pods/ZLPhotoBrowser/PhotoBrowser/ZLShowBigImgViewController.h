@@ -9,26 +9,30 @@
 #import <UIKit/UIKit.h>
 #import <Photos/Photos.h>
 
-@class ZLSelectPhotoModel;
+@class ZLPhotoModel;
 
 @interface ZLShowBigImgViewController : UIViewController
 
-@property (nonatomic, strong) NSArray<PHAsset *> *assets;
-
-@property (nonatomic, strong) NSMutableArray<ZLSelectPhotoModel *> *arraySelectPhotos;
+@property (nonatomic, strong) NSArray<ZLPhotoModel *> *models;
 
 @property (nonatomic, assign) NSInteger selectIndex; //选中的图片下标
 
-@property (nonatomic, assign) NSInteger maxSelectCount; //最大选择照片数
+@property (nonatomic, copy) void (^btnBackBlock)(NSArray<ZLPhotoModel *> *selectedModels, BOOL isOriginal);
 
-@property (nonatomic, assign) BOOL isSelectOriginalPhoto; //是否选择了原图
 
-@property (nonatomic, assign) BOOL isPresent; //该界面显示方式，预览界面查看大图进来是present，从相册小图进来是push
+//点击选择后的图片预览数组，预览相册图片时为 UIImage，预览网络图片时候为UIImage/NSUrl
+@property (nonatomic, strong) NSMutableArray *arrSelPhotos;
 
-@property (nonatomic, assign) BOOL shouldReverseAssets; //是否需要对接收到的图片数组进行逆序排列
+/**预览 网络/本地 图片时候是否 隐藏底部工具栏和导航右上角按钮*/
+@property (nonatomic, assign) BOOL hideToolBar;
 
-@property (nonatomic, copy) void (^onSelectedPhotos)(NSArray<ZLSelectPhotoModel *> *, BOOL isSelectOriginalPhoto); //点击返回按钮的回调
+//预览相册图片回调
+@property (nonatomic, copy) void (^previewSelectedImageBlock)(NSArray<UIImage *> *arrP, NSArray<PHAsset *> *arrA);
 
-@property (nonatomic, copy) void (^btnDoneBlock)(NSArray<ZLSelectPhotoModel *> *, BOOL isSelectOriginalPhoto); //点击确定按钮回调
+//预览网络图片回调
+@property (nonatomic, copy) void (^previewNetImageBlock)(NSArray *photos);
+
+//预览 相册/网络 图片时候，点击返回回调
+@property (nonatomic, copy) void (^cancelPreviewBlock)(void);
 
 @end

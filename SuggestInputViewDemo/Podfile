@@ -12,7 +12,7 @@ end
 
 
 target:SuggestInputView do
-    pod 'ZLPhotoBrowser'
+    pod 'ZLPhotoBrowser','~>2.5.5'
     
     
 end

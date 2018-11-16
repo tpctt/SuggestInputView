@@ -18,6 +18,7 @@
 #define ZLPhotoBrowserOriginalText @"ZLPhotoBrowserOriginalText"
 #define ZLPhotoBrowserDoneText @"ZLPhotoBrowserDoneText"
 #define ZLPhotoBrowserOKText @"ZLPhotoBrowserOKText"
+#define ZLPhotoBrowserBackText @"ZLPhotoBrowserBackText"
 #define ZLPhotoBrowserPhotoText @"ZLPhotoBrowserPhotoText"
 #define ZLPhotoBrowserPreviewText @"ZLPhotoBrowserPreviewText"
 #define ZLPhotoBrowserLoadingText @"ZLPhotoBrowserLoadingText"
@@ -26,12 +27,44 @@
 #define ZLPhotoBrowserMaxSelectCountText @"ZLPhotoBrowserMaxSelectCountText"
 #define ZLPhotoBrowserNoCameraAuthorityText @"ZLPhotoBrowserNoCameraAuthorityText"
 #define ZLPhotoBrowserNoAblumAuthorityText @"ZLPhotoBrowserNoAblumAuthorityText"
+#define ZLPhotoBrowserNoMicrophoneAuthorityText @"ZLPhotoBrowserNoMicrophoneAuthorityText"
 #define ZLPhotoBrowseriCloudPhotoText @"ZLPhotoBrowseriCloudPhotoText"
+#define ZLPhotoBrowserGifPreviewText @"ZLPhotoBrowserGifPreviewText"
+#define ZLPhotoBrowserVideoPreviewText @"ZLPhotoBrowserVideoPreviewText"
+#define ZLPhotoBrowserLivePhotoPreviewText @"ZLPhotoBrowserLivePhotoPreviewText"
+#define ZLPhotoBrowserNoPhotoText @"ZLPhotoBrowserNoPhotoText"
+#define ZLPhotoBrowserCannotSelectVideo @"ZLPhotoBrowserCannotSelectVideo"
+#define ZLPhotoBrowserCannotSelectGIF @"ZLPhotoBrowserCannotSelectGIF"
+#define ZLPhotoBrowserCannotSelectLivePhoto @"ZLPhotoBrowserCannotSelectLivePhoto"
+#define ZLPhotoBrowseriCloudVideoText @"ZLPhotoBrowseriCloudVideoText"
+#define ZLPhotoBrowserEditText @"ZLPhotoBrowserEditText"
+#define ZLPhotoBrowserSaveText @"ZLPhotoBrowserSaveText"
+#define ZLPhotoBrowserMaxVideoDurationText @"ZLPhotoBrowserMaxVideoDurationText"
+#define ZLPhotoBrowserLoadNetImageFailed @"ZLPhotoBrowserLoadNetImageFailed"
+#define ZLPhotoBrowserSaveVideoFailed @"ZLPhotoBrowserSaveVideoFailed"
+
+#define ZLPhotoBrowserCameraRoll @"ZLPhotoBrowserCameraRoll"
+#define ZLPhotoBrowserPanoramas @"ZLPhotoBrowserPanoramas"
+#define ZLPhotoBrowserVideos @"ZLPhotoBrowserVideos"
+#define ZLPhotoBrowserFavorites @"ZLPhotoBrowserFavorites"
+#define ZLPhotoBrowserTimelapses @"ZLPhotoBrowserTimelapses"
+#define ZLPhotoBrowserRecentlyAdded @"ZLPhotoBrowserRecentlyAdded"
+#define ZLPhotoBrowserBursts @"ZLPhotoBrowserBursts"
+#define ZLPhotoBrowserSlomoVideos @"ZLPhotoBrowserSlomoVideos"
+#define ZLPhotoBrowserSelfPortraits @"ZLPhotoBrowserSelfPortraits"
+#define ZLPhotoBrowserScreenshots @"ZLPhotoBrowserScreenshots"
+#define ZLPhotoBrowserDepthEffect @"ZLPhotoBrowserDepthEffect"
+#define ZLPhotoBrowserLivePhotos @"ZLPhotoBrowserLivePhotos"
+#define ZLPhotoBrowserAnimated @"ZLPhotoBrowserAnimated"
 
 #define kRGB(r, g, b)   [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
 
-#define weakify(var)   __weak typeof(var) weakSelf = var
-#define strongify(var) __strong typeof(var) strongSelf = var
+#define zl_weakify(var)   __weak typeof(var) weakSelf = var
+#define zl_strongify(var) __strong typeof(var) strongSelf = var
+
+#define ZL_IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define ZL_IS_IPHONE_X (ZL_IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 812.0f)
+#define ZL_SafeAreaBottom (ZL_IS_IPHONE_X ? 34 : 0)
 
 #define kZLPhotoBrowserBundle [NSBundle bundleForClass:[self class]]
 
@@ -40,35 +73,71 @@
 #define kZLPhotoBrowserFrameworkSrcName(file) [@"Frameworks/ZLPhotoBrowser.framework/ZLPhotoBrowser.bundle" stringByAppendingPathComponent:file]
 
 #define kViewWidth      [[UIScreen mainScreen] bounds].size.width
-//如果项目中设置了导航条为不透明，即[UINavigationBar appearance].translucent=NO，那么这里的kViewHeight需要-64
 #define kViewHeight     [[UIScreen mainScreen] bounds].size.height
 
-////////ZLPhotoActionSheet
-#define kBaseViewHeight 300
+//app名字
+#define kInfoDict [NSBundle mainBundle].localizedInfoDictionary ?: [NSBundle mainBundle].infoDictionary
+#define kAPPName [kInfoDict valueForKey:@"CFBundleDisplayName"] ?: [kInfoDict valueForKey:@"CFBundleName"]
+
+//自定义图片名称存于plist中的key
+#define ZLCustomImageNames @"ZLCustomImageNames"
+//设置框架语言的key
+#define ZLLanguageTypeKey @"ZLLanguageTypeKey"
 
 ////////ZLShowBigImgViewController
-#define kItemMargin 30
+#define kItemMargin 40
 
 ///////ZLBigImageCell 不建议设置太大，太大的话会导致图片加载过慢
 #define kMaxImageWidth 500
 
-static inline void SetViewWidth (UIView *view, CGFloat width) {
+#define ClippingRatioValue1 @"value1"
+#define ClippingRatioValue2 @"value2"
+#define ClippingRatioTitleFormat @"titleFormat"
+
+typedef NS_ENUM(NSUInteger, ZLLanguageType) {
+    //跟随系统语言，默认
+    ZLLanguageSystem,
+    //中文简体
+    ZLLanguageChineseSimplified,
+    //中文繁体
+    ZLLanguageChineseTraditional,
+    //英文
+    ZLLanguageEnglish,
+    //日文
+    ZLLanguageJapanese,
+};
+
+typedef NS_ENUM(NSUInteger, ZLCaptureSessionPreset) {
+    ZLCaptureSessionPreset325x288,
+    ZLCaptureSessionPreset640x480,
+    ZLCaptureSessionPreset1280x720,
+    ZLCaptureSessionPreset1920x1080,
+    ZLCaptureSessionPreset3840x2160,
+};
+
+typedef NS_ENUM(NSUInteger, ZLExportVideoType) {
+    //default
+    ZLExportVideoTypeMov,
+    ZLExportVideoTypeMp4,
+};
+
+static inline void SetViewWidth(UIView *view, CGFloat width) {
     CGRect frame = view.frame;
     frame.size.width = width;
     view.frame = frame;
 }
 
-static inline CGFloat GetViewWidth (UIView *view) {
+static inline CGFloat GetViewWidth(UIView *view) {
     return view.frame.size.width;
 }
 
-static inline void SetViewHeight (UIView *view, CGFloat height) {
+static inline void SetViewHeight(UIView *view, CGFloat height) {
     CGRect frame = view.frame;
     frame.size.height = height;
     view.frame = frame;
 }
 
-static inline CGFloat GetViewHeight (UIView *view) {
+static inline CGFloat GetViewHeight(UIView *view) {
     return view.frame.size.height;
 }
 
@@ -76,7 +145,15 @@ static inline NSString *  GetLocalLanguageTextValue (NSString *key) {
     return [NSBundle zlLocalizedStringForKey:key];
 }
 
-static inline CGFloat GetMatchValue (NSString *text, CGFloat fontSize, BOOL isHeightFixed, CGFloat fixedValue) {
+static inline UIImage * GetImageWithName(NSString *name) {
+    NSArray *names = [[NSUserDefaults standardUserDefaults] valueForKey:ZLCustomImageNames];
+    if ([names containsObject:name]) {
+        return [UIImage imageNamed:name];
+    }
+    return [UIImage imageNamed:kZLPhotoBrowserSrcName(name)]?:[UIImage imageNamed:kZLPhotoBrowserFrameworkSrcName(name)];
+}
+
+static inline CGFloat GetMatchValue(NSString *text, CGFloat fontSize, BOOL isHeightFixed, CGFloat fixedValue) {
     CGSize size;
     if (isHeightFixed) {
         size = CGSizeMake(MAXFLOAT, fixedValue);
@@ -96,7 +173,14 @@ static inline CGFloat GetMatchValue (NSString *text, CGFloat fontSize, BOOL isHe
     }
 }
 
-static inline CABasicAnimation * GetPositionAnimation (id fromValue, id toValue, CFTimeInterval duration, NSString *keyPath) {
+static inline void ShowAlert(NSString *message, UIViewController *sender) {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:GetLocalLanguageTextValue(ZLPhotoBrowserOKText) style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:action];
+    [sender presentViewController:alert animated:YES completion:nil];
+}
+
+static inline CABasicAnimation * GetPositionAnimation(id fromValue, id toValue, CFTimeInterval duration, NSString *keyPath) {
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:keyPath];
     animation.fromValue = fromValue;
     animation.toValue   = toValue;
@@ -121,6 +205,26 @@ static inline CAKeyframeAnimation * GetBtnStatusChangedAnimation() {
                        [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.8, 0.8, 1.0)],
                        [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)]];
     return animate;
+}
+
+static inline NSInteger GetDuration (NSString *duration) {
+    NSArray *arr = [duration componentsSeparatedByString:@":"];
+    
+    NSInteger d = 0;
+    for (int i = 0; i < arr.count; i++) {
+        d += [arr[i] integerValue] * pow(60, (arr.count-1-i));
+    }
+    return d;
+}
+
+
+static inline NSDictionary *
+GetCustomClipRatio() {
+    return @{ClippingRatioValue1: @(0), ClippingRatioValue2: @(0), ClippingRatioTitleFormat: @"Custom"};
+}
+
+static inline NSDictionary * GetClipRatio(NSInteger value1, NSInteger value2) {
+    return @{ClippingRatioValue1: @(value1), ClippingRatioValue2: @(value2), ClippingRatioTitleFormat: @"%g : %g"};
 }
 
 #endif /* ZLDefine_h */
